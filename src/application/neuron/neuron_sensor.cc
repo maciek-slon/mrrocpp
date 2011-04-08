@@ -328,7 +328,7 @@ void neuron_sensor::sendCommand(uint8_t command)
 void neuron_sensor::sendCurrentPosition(double x, double y, double z)
 {
 	sendCoordinates(CURRENT_POSITION, x, y, z);
-	printf("sendCurrentPosition %f %f %f\n", x, y, z);
+	//printf("sendCurrentPosition %f %f %f\n", x, y, z);
 }
 
 /**
@@ -403,7 +403,7 @@ Coordinates neuron_sensor::getFirstCoordinates()
  */
 void neuron_sensor::startGettingTrajectory()
 {
-	currentPeriod = 5;
+	currentPeriod = 1;
 	sendCommand(TRAJECTORY_FIRST);
 }
 
@@ -462,7 +462,7 @@ bool neuron_sensor::newData()
 bool neuron_sensor::positionRequested()
 {
 	--currentPeriod;
-
+	//printf("current period: %d\n",currentPeriod);
 	if (basePeriod>0 && currentPeriod == 0){
 		currentPeriod = basePeriod;
 		return true;
